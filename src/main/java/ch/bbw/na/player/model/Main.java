@@ -29,7 +29,7 @@ public class Main extends Color{
             if (p1Turn) {
                 if (garen.getBlock() < Math.random()) {
                     garen.setHp(garen.getHp() - kale.getAa());
-                    System.out.println("garen HP: " + garen.getHp());
+                    System.out.println("gaen HP: " + garen.getHp());
                     if (garen.getHp() <= 0) {
                         System.out.println("kale wins");
                         break;
