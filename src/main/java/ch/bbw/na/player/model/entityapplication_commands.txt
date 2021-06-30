@@ -1,0 +1,44 @@
+System.out.println("Add Player: ");
+        Entity entity = new Entity();
+        repository.createPlayer(entity);
+        for(Entity e: repository.getAllPlayers()) {
+            System.out.println(e);
+        }
+        System.out.println();
+
+        System.out.println("Read Player: ");
+        List<Entity> list = repository.getAllPlayers();
+        if ((list != null) && (list.size()>1)) {
+            System.out.println(repository.readPlayer(list.get(2).getId()));
+        }
+        System.out.println();
+
+        System.out.println("Update Player: ");
+        list = repository.getAllPlayers();
+
+        if ((list != null) && (list.size()>0)) {
+            Entity tmpEntity = repository.readPlayer(list.get(0).getId());
+            if (tmpEntity != null) {
+                tmpEntity.setName("Phish");
+                tmpEntity.setHp(20);
+                repository.updatePlayer(tmpEntity);
+                for (Entity e: repository.getAllPlayers()) {
+                    System.out.println(e);
+                }
+                repository.getAllPlayers().forEach(System.out::println);
+            }
+            else {
+                System.out.println("Update, Player is null");
+            }
+        }
+        System.out.println();
+
+        System.out.println("Delete Player: ");
+        list = repository.getAllPlayers();
+        if ((list != null) && (list.size()>1)) {
+            repository.deletePlayer(list.get(1).getId());
+        }
+        for (Entity e: repository.getAllPlayers()) {
+            System.out.println(e);
+        }
+        System.out.println();
